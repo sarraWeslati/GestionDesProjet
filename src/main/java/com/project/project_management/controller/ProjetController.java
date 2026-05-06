@@ -1,8 +1,19 @@
 package com.project.project_management.controller;
 
-import com.project.project_management.model.Projet;
+import com.project.project_management.dto.ProjetDTO;
+import com.project.project_management.dto.RapportFinancierDTO;
 import com.project.project_management.service.ProjetService;
-import org.springframework.web.bind.annotation.*;
+import jakarta.validation.Valid;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
 import java.util.List;
 
 @RestController
@@ -17,35 +28,43 @@ public class ProjetController {
     }
 
     @GetMapping
-    public List<Projet> getAll() {
+    public List<ProjetDTO> getAll() {
         return projetService.getAll();
     }
 
+    @GetMapping("/{id}")
+    public ProjetDTO getById(@PathVariable Long id) {
+        return projetService.getById(id);
+    }
+
     @PostMapping
-    public Projet create(@RequestBody Projet projet) {
+    public ProjetDTO create(@Valid @RequestBody ProjetDTO projet) {
         return projetService.save(projet);
+    }
+
+    @PutMapping("/{id}")
+    public ProjetDTO update(@PathVariable Long id, @Valid @RequestBody ProjetDTO projet) {
+        return projetService.update(id, projet);
     }
 
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Long id) {
         projetService.delete(id);
     }
-    
+
     @GetMapping("/{id}/cout")
     public double getCout(@PathVariable Long id) {
         return projetService.calculCoutProjet(id);
     }
-    
+
     @GetMapping("/{id}/budget-status")
     public String checkBudget(@PathVariable Long id) {
+        RapportFinancierDTO rapport = projetService.getRapportFinancier(id);
+        return rapport.getBudgetDepasse() ? "Budget depasse" : "Budget OK";
+    }
 
-        Projet p = projetService.getById(id); // ou repository
-        double cout = projetService.calculCoutProjet(id);
-
-        if (cout > p.getBudget()) {
-            return "⚠️ Budget dépassé";
-        } else {
-            return "✅ Budget OK";
-        }
+    @GetMapping("/{id}/rapport-financier")
+    public RapportFinancierDTO getRapportFinancier(@PathVariable Long id) {
+        return projetService.getRapportFinancier(id);
     }
 }
