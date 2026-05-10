@@ -4,6 +4,7 @@ import com.project.project_management.dto.EmployeDTO;
 import com.project.project_management.mapper.EmployeMapper;
 import com.project.project_management.model.Employe;
 import com.project.project_management.repository.EmployeRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class EmployeService {
     private final EmployeRepository employeRepository;
     private final EmployeMapper employeMapper;
 
+    @Autowired
     public EmployeService(EmployeRepository employeRepository, EmployeMapper employeMapper) {
         this.employeRepository = employeRepository;
         this.employeMapper = employeMapper;

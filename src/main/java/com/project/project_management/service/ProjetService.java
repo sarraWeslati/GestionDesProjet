@@ -7,6 +7,7 @@ import com.project.project_management.model.Affectation;
 import com.project.project_management.model.Projet;
 import com.project.project_management.repository.AffectationRepository;
 import com.project.project_management.repository.ProjetRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class ProjetService {
     private final AffectationRepository affectationRepo;
     private final ProjetMapper projetMapper;
 
+    @Autowired
     public ProjetService(ProjetRepository projetRepository, AffectationRepository affectationRepo,
                          ProjetMapper projetMapper) {
         this.projetRepository = projetRepository;

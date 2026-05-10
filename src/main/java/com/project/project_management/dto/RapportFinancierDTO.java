@@ -7,7 +7,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RapportFinancierDTO {
+public class RapportFinancierDTO { // DTO pour le rapport financier d'un projet
     private Long projetId;
     private String nomProjet;
     private Double budget;

@@ -11,7 +11,7 @@ import java.util.stream.Collectors;
 @Component
 public class ProjetMapper {
 
-    public ProjetDTO toDto(Projet projet) {
+    public ProjetDTO toDto(Projet projet) {// Convertit une entité Projet en DTO ProjetDTO
         if (projet == null) {
             return null;
         }

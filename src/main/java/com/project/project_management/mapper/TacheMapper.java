@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class TacheMapper {
 
-    public TacheDTO toDto(Tache tache) {
+    public TacheDTO toDto(Tache tache) {// Convertit une entité Tache en DTO TacheDTO
         if (tache == null) {
             return null;
         }

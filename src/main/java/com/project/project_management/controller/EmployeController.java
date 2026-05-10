@@ -3,6 +3,7 @@ package com.project.project_management.controller;
 import com.project.project_management.dto.EmployeDTO;
 import com.project.project_management.service.EmployeService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,7 @@ public class EmployeController {
 
     private final EmployeService employeService;
 
+    @Autowired
     public EmployeController(EmployeService employeService) {
         this.employeService = employeService;
     }

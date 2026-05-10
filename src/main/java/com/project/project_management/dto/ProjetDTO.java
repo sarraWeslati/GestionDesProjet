@@ -13,7 +13,7 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class ProjetDTO {
+public class ProjetDTO { // DTO pour le projet 
     private Long id;
 
     @NotBlank(message = "Le nom du projet est obligatoire")

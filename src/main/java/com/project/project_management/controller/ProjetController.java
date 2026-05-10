@@ -4,6 +4,7 @@ import com.project.project_management.dto.ProjetDTO;
 import com.project.project_management.dto.RapportFinancierDTO;
 import com.project.project_management.service.ProjetService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +24,7 @@ public class ProjetController {
 
     private final ProjetService projetService;
 
+    @Autowired
     public ProjetController(ProjetService projetService) {
         this.projetService = projetService;
     }

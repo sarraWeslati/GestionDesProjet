@@ -14,8 +14,14 @@ public class SecurityConfig {
         http
             .csrf(csrf -> csrf.disable())
             .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/auth/**", "/api/**").permitAll()
-                .anyRequest().authenticated()
+                .requestMatchers(
+                    "/auth/**",
+                    "/api/**",
+                    "/swagger-ui.html",
+                    "/swagger-ui/**",
+                    "/v3/api-docs/**"
+                ).permitAll()
+                .anyRequest().authenticated()//Toutes les autres routes : nécessitent une authentification, Donc utilisateur connecté obligatoire. 
             );
 
         return http.build();

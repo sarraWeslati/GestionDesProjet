@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class EmployeMapper {
 
-    public EmployeDTO toDto(Employe employe) {
+    public EmployeDTO toDto(Employe employe) {// Convertit une entité Employe en DTO EmployeDTO
         if (employe == null) {
             return null;
         }

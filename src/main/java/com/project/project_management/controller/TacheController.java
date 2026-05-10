@@ -3,6 +3,7 @@ package com.project.project_management.controller;
 import com.project.project_management.dto.TacheDTO;
 import com.project.project_management.service.TacheService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,7 @@ public class TacheController {
 
     private final TacheService tacheService;
 
+    @Autowired
     public TacheController(TacheService tacheService) {
         this.tacheService = tacheService;
     }

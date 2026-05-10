@@ -7,10 +7,10 @@ import lombok.NoArgsConstructor;
 
 import java.util.Date;
 
-@Data
-@NoArgsConstructor
-@AllArgsConstructor
-public class AffectationDTO {
+@Data 
+@NoArgsConstructor // Génère les getters, setters, equals, hashCode et toString
+@AllArgsConstructor // Génère un constructeur avec tous les arguments
+public class AffectationDTO { // DTO pour l'affectation d'une tâche à une ressource
     private Long id;
 
     @NotNull(message = "La date de debut est obligatoire")

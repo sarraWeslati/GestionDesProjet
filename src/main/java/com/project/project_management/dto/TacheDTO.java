@@ -6,12 +6,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
 import java.util.Date;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class TacheDTO {
+public class TacheDTO { // DTO pour la tâche 
     private Long id;
 
     @NotBlank(message = "La description est obligatoire")
@@ -33,4 +34,6 @@ public class TacheDTO {
     private Long responsableId;
 
     private String responsableNom;
+    
+    private List<Long> ressourceIds;
 }

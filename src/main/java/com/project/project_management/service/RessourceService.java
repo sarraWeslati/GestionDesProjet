@@ -4,6 +4,7 @@ import com.project.project_management.dto.RessourceDTO;
 import com.project.project_management.mapper.RessourceMapper;
 import com.project.project_management.model.Ressource;
 import com.project.project_management.repository.RessourceRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,6 +16,7 @@ public class RessourceService {
     private final RessourceRepository repo;
     private final RessourceMapper ressourceMapper;
 
+    @Autowired
     public RessourceService(RessourceRepository repo, RessourceMapper ressourceMapper) {
         this.repo = repo;
         this.ressourceMapper = ressourceMapper;

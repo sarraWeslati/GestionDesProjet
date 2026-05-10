@@ -10,7 +10,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class RessourceDTO {
+public class RessourceDTO { // DTO pour la ressource
     private Long id;
 
     @NotBlank(message = "Le nom de la ressource est obligatoire")

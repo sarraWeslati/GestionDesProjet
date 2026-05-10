@@ -8,6 +8,7 @@ import com.project.project_management.model.Tache;
 import com.project.project_management.repository.AffectationRepository;
 import com.project.project_management.repository.RessourceRepository;
 import com.project.project_management.repository.TacheRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -21,6 +22,7 @@ public class AffectationService {
     private final RessourceRepository ressourceRepo;
     private final AffectationMapper affectationMapper;
 
+    @Autowired
     public AffectationService(AffectationRepository affectationRepo,
                               TacheRepository tacheRepo,
                               RessourceRepository ressourceRepo,

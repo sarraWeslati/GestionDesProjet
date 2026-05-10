@@ -9,7 +9,7 @@ import org.springframework.stereotype.Component;
 import java.util.concurrent.TimeUnit;
 
 @Component
-public class AffectationMapper {
+public class AffectationMapper {// Mapper pour l'affectation entre une tâche et une ressource
 
     public AffectationDTO toDto(Affectation affectation) {
         if (affectation == null) {

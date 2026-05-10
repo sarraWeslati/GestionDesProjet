@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class RessourceMapper {
 
-    public RessourceDTO toDto(Ressource ressource) {
+    public RessourceDTO toDto(Ressource ressource) {// Convertit une entité Ressource en DTO RessourceDTO
         if (ressource == null) {
             return null;
         }

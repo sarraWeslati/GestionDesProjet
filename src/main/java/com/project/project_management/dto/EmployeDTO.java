@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class EmployeDTO {
+public class EmployeDTO { // DTO pour l'employé 
     private Long id;
 
     @NotBlank(message = "Le nom de l'employe est obligatoire")
