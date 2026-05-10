@@ -2,6 +2,7 @@ package com.project.project_management.dto;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -36,4 +37,10 @@ public class TacheDTO { // DTO pour la tâche
     private String responsableNom;
     
     private List<Long> ressourceIds;
+    
+    // Noms des ressources
+    private List<String> ressourcesNoms;
+
+    // Coût total de la tâche
+    private double coutTotal;
 }

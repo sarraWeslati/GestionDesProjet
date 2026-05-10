@@ -1,16 +1,11 @@
 package com.project.project_management.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import java.util.List;
-import jakarta.persistence.ManyToMany;
+import jakarta.persistence.*;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 public class Tache {
@@ -31,21 +26,22 @@ public class Tache {
 
     @ManyToOne
     private Employe responsable;
+
     @ManyToMany
-    private List<Ressource> ressources;
+    @JoinTable(
+        name = "tache_ressource",
+        joinColumns = @JoinColumn(name = "tache_id"),
+        inverseJoinColumns = @JoinColumn(name = "ressource_id")
+    )
+    private List<Ressource> ressources = new ArrayList<>();
 
     public Tache() {
     }
 
-    public List<Ressource> getRessources() {
-		return ressources;
-	}
+    public Tache(Long id, String description, String etat,
+                 String priorite, Date deadline,
+                 Projet projet, Employe responsable) {
 
-	public void setRessources(List<Ressource> ressources) {
-		this.ressources = ressources;
-	}
-
-	public Tache(Long id, String description, String etat, String priorite, Date deadline, Projet projet, Employe responsable) {
         this.id = id;
         this.description = description;
         this.etat = etat;
@@ -109,5 +105,13 @@ public class Tache {
 
     public void setResponsable(Employe responsable) {
         this.responsable = responsable;
+    }
+
+    public List<Ressource> getRessources() {
+        return ressources;
+    }
+
+    public void setRessources(List<Ressource> ressources) {
+        this.ressources = ressources;
     }
 }
