@@ -1,0 +1,108 @@
+<div class="container mt-5">
+
+  <div class="card p-4 shadow mb-4">
+
+    <h2 class="mb-4">
+      Gestion des Employés
+    </h2>
+
+    <input
+      [(ngModel)]="employe.nom"
+      class="form-control mb-3"
+      placeholder="Nom">
+
+    <input
+      [(ngModel)]="employe.email"
+      class="form-control mb-3"
+      placeholder="Email">
+
+    <input
+      [(ngModel)]="employe.role"
+      class="form-control mb-3"
+      placeholder="Role">
+
+    <input
+      [(ngModel)]="employe.equipe"
+      class="form-control mb-3"
+      placeholder="Equipe">
+
+    <button
+      *ngIf="!editMode"
+      class="btn btn-success"
+      (click)="saveEmploye()">
+
+      Ajouter Employé
+
+    </button>
+
+    <button
+      *ngIf="editMode"
+      class="btn btn-warning"
+      (click)="updateEmploye()">
+
+      Modifier Employé
+
+    </button>
+
+  </div>
+
+  <div class="card p-4 shadow">
+
+    <h3 class="mb-4">
+      Liste des employés
+    </h3>
+
+    <table class="table table-bordered">
+
+      <thead>
+
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Email</th>
+          <th>Role</th>
+          <th>Equipe</th>
+          <th>Action</th>
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let e of employes">
+
+          <td>{{ e.id }}</td>
+          <td>{{ e.nom }}</td>
+          <td>{{ e.email }}</td>
+          <td>{{ e.role }}</td>
+          <td>{{ e.equipe }}</td>
+
+          <td>
+
+            <button
+              class="btn btn-primary btn-sm me-2"
+              (click)="editEmploye(e)">
+
+              Modifier
+
+            </button>
+
+            <button
+              class="btn btn-danger btn-sm"
+              (click)="deleteEmploye(e.id!)">
+
+              Supprimer
+
+            </button>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

@@ -1,0 +1,237 @@
+<div class="container mt-5">
+
+  <!-- FORMULAIRE -->
+
+  <div class="card p-4 shadow mb-4">
+
+    <h2 class="mb-4">
+      Gestion des Projets
+    </h2>
+
+    <!-- NOM -->
+
+    <input
+      [(ngModel)]="projet.nom"
+      name="nom"
+      class="form-control mb-3"
+      placeholder="Nom du projet">
+
+    <!-- DATE DEBUT -->
+
+    <input
+      [(ngModel)]="projet.dateDebut"
+      name="dateDebut"
+      type="date"
+      class="form-control mb-3">
+
+    <!-- DATE FIN -->
+
+    <input
+      [(ngModel)]="projet.dateFin"
+      name="dateFin"
+      type="date"
+      class="form-control mb-3">
+
+    <!-- BUDGET -->
+
+    <input
+      [(ngModel)]="projet.budget"
+      name="budget"
+      type="number"
+      class="form-control mb-3"
+      placeholder="Budget">
+
+    <!-- STATUT -->
+
+    <input
+      [(ngModel)]="projet.statut"
+      name="statut"
+      class="form-control mb-3"
+      placeholder="Statut">
+
+    <!-- RESSOURCES -->
+
+    <div class="mb-3">
+
+      <label class="form-label">
+        Ressources
+      </label>
+
+      <select
+        multiple
+        size="5"
+        class="form-select"
+        [(ngModel)]="projet.ressourceIds"
+        name="ressourceIds">
+
+        <option
+          *ngFor="let r of ressources"
+          [ngValue]="r.id">
+
+          {{ r.nom }}
+
+        </option>
+
+      </select>
+
+      <small class="text-muted">
+        Maintenir CTRL pour sélectionner plusieurs ressources
+      </small>
+
+    </div>
+
+    <!-- AJOUT -->
+
+    <button
+      *ngIf="!editMode"
+      class="btn btn-success"
+      (click)="saveProjet()">
+
+      Ajouter Projet
+
+    </button>
+
+    <!-- MODIFICATION -->
+
+    <button
+      *ngIf="editMode"
+      class="btn btn-warning"
+      (click)="updateProjet()">
+
+      Modifier Projet
+
+    </button>
+
+  </div>
+
+  <!-- TABLEAU -->
+
+  <div class="card p-4 shadow">
+
+    <h3 class="mb-4">
+      Liste des projets
+    </h3>
+
+    <table class="table table-bordered">
+
+      <thead>
+
+        <tr>
+
+          <th>ID</th>
+
+          <th>Nom</th>
+
+          <th>Budget</th>
+
+          <th>Statut</th>
+
+          <th>Ressources</th>
+
+          <th>Coût Total</th>
+
+          <th>Budget Restant</th>
+
+          <th>Action</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let p of projets">
+
+          <!-- ID -->
+
+          <td>{{ p.id }}</td>
+
+          <!-- NOM -->
+
+          <td>{{ p.nom }}</td>
+
+          <!-- BUDGET -->
+
+          <td>
+
+            <span class="badge bg-dark">
+
+              {{ p.budget }} DT
+
+            </span>
+
+          </td>
+
+          <!-- STATUT -->
+
+          <td>{{ p.statut }}</td>
+
+          <!-- RESSOURCES -->
+
+          <td>
+
+            <span
+              *ngFor="let r of p.ressourcesNoms"
+              class="badge bg-primary me-1">
+
+              {{ r }}
+
+            </span>
+
+          </td>
+
+          <!-- COUT TOTAL -->
+
+          <td>
+
+            <span class="badge bg-danger">
+
+              {{ p.coutTotalProjet }} DT
+
+            </span>
+
+          </td>
+
+          <!-- BUDGET RESTANT -->
+
+          <td>
+
+            <span class="badge bg-success">
+
+              {{ p.budgetRestant }} DT
+
+            </span>
+
+          </td>
+
+          <!-- ACTIONS -->
+
+          <td>
+
+            <button
+              class="btn btn-primary btn-sm me-2"
+              (click)="editProjet(p)">
+
+              Modifier
+
+            </button>
+
+            <button
+              class="btn btn-danger btn-sm"
+              (click)="deleteProjet(p.id!)">
+
+              Supprimer
+
+            </button>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

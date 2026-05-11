@@ -1,0 +1,137 @@
+<div class="container mt-5">
+
+  <div class="card p-4 shadow mb-4">
+
+    <h2 class="mb-4">
+      Gestion des Ressources
+    </h2>
+
+    <input
+      [(ngModel)]="ressource.nom"
+      class="form-control mb-3"
+      placeholder="Nom">
+
+    <input
+      [(ngModel)]="ressource.type"
+      class="form-control mb-3"
+      placeholder="Type">
+
+    <input
+      [(ngModel)]="ressource.cout"
+      type="number"
+      class="form-control mb-3"
+      placeholder="Coût">
+
+    <select
+      [(ngModel)]="ressource.disponibilite"
+      class="form-select mb-3">
+
+      <option [ngValue]="true">
+        Disponible
+      </option>
+
+      <option [ngValue]="false">
+        Indisponible
+      </option>
+
+    </select>
+
+    <button
+      *ngIf="!editMode"
+      class="btn btn-success"
+      (click)="saveRessource()">
+
+      Ajouter Ressource
+
+    </button>
+
+    <button
+      *ngIf="editMode"
+      class="btn btn-warning"
+      (click)="updateRessource()">
+
+      Modifier Ressource
+
+    </button>
+
+  </div>
+
+  <div class="card p-4 shadow">
+
+    <h3 class="mb-4">
+      Liste des ressources
+    </h3>
+
+    <table class="table table-bordered">
+
+      <thead>
+
+        <tr>
+          <th>ID</th>
+          <th>Nom</th>
+          <th>Type</th>
+          <th>Coût</th>
+          <th>Disponibilité</th>
+          <th>Action</th>
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let r of ressources">
+
+          <td>{{ r.id }}</td>
+          <td>{{ r.nom }}</td>
+          <td>{{ r.type }}</td>
+          <td>{{ r.cout }}</td>
+
+          <td>
+
+            <span
+              class="badge bg-success"
+              *ngIf="r.disponibilite">
+
+              Disponible
+
+            </span>
+
+            <span
+              class="badge bg-danger"
+              *ngIf="!r.disponibilite">
+
+              Indisponible
+
+            </span>
+
+          </td>
+
+          <td>
+
+            <button
+              class="btn btn-primary btn-sm me-2"
+              (click)="editRessource(r)">
+
+              Modifier
+
+            </button>
+
+            <button
+              class="btn btn-danger btn-sm"
+              (click)="deleteRessource(r.id!)">
+
+              Supprimer
+
+            </button>
+
+          </td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

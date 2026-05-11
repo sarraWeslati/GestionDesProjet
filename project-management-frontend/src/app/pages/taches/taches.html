@@ -1,0 +1,230 @@
+<div class="container mt-5">
+
+  <div class="card p-4 shadow mb-4">
+
+    <h2 class="mb-4">
+      Gestion des Tâches
+    </h2>
+
+    <!-- TITRE -->
+
+    <input
+      [(ngModel)]="tache.description"
+      class="form-control mb-3"
+      placeholder="Titre">
+
+    <!-- DESCRIPTION -->
+
+    <textarea
+      [(ngModel)]="tache.description"
+      class="form-control mb-3"
+      placeholder="Description">
+    </textarea>
+
+    <!-- STATUT -->
+
+    <input
+      [(ngModel)]="tache.etat"
+      class="form-control mb-3"
+      placeholder="Statut">
+
+    <!-- PRIORITE -->
+
+    <input
+      [(ngModel)]="tache.priorite"
+      class="form-control mb-3"
+      placeholder="Priorité">
+
+    <!-- DATE -->
+
+    <input
+      [(ngModel)]="tache.deadline"
+      type="date"
+      class="form-control mb-3">
+
+    <!-- PROJET -->
+
+    <select
+      [(ngModel)]="tache.projetId"
+      class="form-select mb-3">
+
+      <option value="0">
+        Choisir Projet
+      </option>
+
+      <option
+        *ngFor="let p of projets"
+        [value]="p.id">
+
+        {{ p.nom }}
+
+      </option>
+
+    </select>
+
+    <!-- EMPLOYE -->
+
+    <select
+      [(ngModel)]="tache.responsableId"
+      class="form-select mb-3">
+
+      <option value="0">
+        Choisir Employé
+      </option>
+
+      <option
+        *ngFor="let e of employes"
+        [value]="e.id">
+
+        {{ e.nom }}
+
+      </option>
+
+    </select>
+
+    <!-- RESSOURCES -->
+
+    <div class="mb-3">
+
+      <label class="form-label">
+        Ressources
+      </label>
+
+      <select
+        multiple
+        class="form-select"
+        [(ngModel)]="tache.ressourceIds"
+        name="ressourceIds">
+
+        <option
+          *ngFor="let r of ressources"
+          [value]="r.id">
+
+          {{ r.nom }}
+
+        </option>
+
+      </select>
+
+    </div>
+
+    <!-- BOUTON AJOUT -->
+
+    <button
+      *ngIf="!editMode"
+      class="btn btn-success"
+      (click)="saveTache()">
+
+      Ajouter Tâche
+
+    </button>
+
+    <!-- BOUTON MODIFICATION -->
+
+    <button
+      *ngIf="editMode"
+      class="btn btn-warning"
+      (click)="updateTache()">
+
+      Modifier Tâche
+
+    </button>
+
+  </div>
+
+  <!-- TABLEAU -->
+
+  <div class="card p-4 shadow">
+
+    <h3 class="mb-4">
+      Liste des tâches
+    </h3>
+
+    <table class="table table-bordered">
+
+      <thead>
+
+        <tr>
+
+          <th>ID</th>
+          <th>Titre</th>
+          <th>Statut</th>
+          <th>Priorité</th>
+          <th>Responsable</th>
+          <th>Action</th>
+          <th>Ressources</th>
+          <th>Coût Total</th>
+
+        </tr>
+
+      </thead>
+
+      <tbody>
+
+        <tr *ngFor="let t of taches">
+
+          <td>{{ t.id }}</td>
+
+          <td>{{ t.description  }}</td>
+
+          <td>{{ t.etat }}</td>
+
+          <td>{{ t.priorite }}</td>
+
+          <td>{{ t.responsableNom }}</td>
+
+          <td>
+
+  <button
+    class="btn btn-primary btn-sm me-2"
+    (click)="editTache(t)">
+
+    Modifier
+
+  </button>
+
+  <button
+    class="btn btn-danger btn-sm"
+    (click)="deleteTache(t.id!)">
+
+    Supprimer
+
+  </button>
+
+</td>
+
+<!-- RESSOURCES -->
+
+<td>
+
+  <span
+    *ngFor="let r of t.ressourcesNoms"
+    class="badge bg-primary me-1">
+
+    {{ r }}
+
+  </span>
+
+</td>
+
+<!-- COUT TOTAL -->
+
+<td>
+
+  <span class="badge bg-success">
+
+    {{ t.coutTotal }} DT
+
+  </span>
+
+</td>
+
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</div>

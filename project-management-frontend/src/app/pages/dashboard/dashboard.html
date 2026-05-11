@@ -1,0 +1,101 @@
+<div class="dashboard-header">
+
+  <div>
+
+    <h1>
+      Dashboard
+    </h1>
+
+    <p>
+      Bienvenue dans votre système de gestion
+    </p>
+
+  </div>
+
+</div>
+
+<!-- STATISTIQUES -->
+
+<div class="stats-grid">
+
+  <!-- PROJETS -->
+
+  <div class="stat-card blue">
+
+    <h3>
+      Projets
+    </h3>
+
+    <h1>
+      {{ totalProjets }}
+    </h1>
+
+  </div>
+
+  <!-- EMPLOYES -->
+
+  <div class="stat-card green">
+
+    <h3>
+      Employés
+    </h3>
+
+    <h1>
+      {{ totalEmployes }}
+    </h1>
+
+  </div>
+
+  <!-- TACHES -->
+
+  <div class="stat-card orange">
+
+    <h3>
+      Tâches
+    </h3>
+
+    <h1>
+      {{ totalTaches }}
+    </h1>
+
+  </div>
+
+  <!-- RESSOURCES -->
+
+  <div class="stat-card dark">
+
+    <h3>
+      Ressources
+    </h3>
+
+    <h1>
+      {{ totalRessources }}
+    </h1>
+
+  </div>
+
+</div>
+
+<!-- GRAPHIQUE GLOBAL -->
+
+<div class="chart-card">
+
+  <h2>
+    Statistiques Globales
+  </h2>
+
+  <canvas id="statsChart"></canvas>
+
+</div>
+
+<!-- GRAPHIQUE BUDGET -->
+
+<div class="chart-card mt-4">
+
+  <h2>
+    Budget par Projet
+  </h2>
+
+  <canvas id="budgetChart"></canvas>
+
+</div>
