@@ -3,10 +3,12 @@ package com.project.project_management.mapper;
 import com.project.project_management.dto.ProjetDTO;
 import com.project.project_management.model.Projet;
 import com.project.project_management.model.Tache;
+import com.project.project_management.model.Ressource;
 import org.springframework.stereotype.Component;
 
 import java.util.Collections;
 import java.util.stream.Collectors;
+import java.util.List;
 
 @Component
 public class ProjetMapper {
@@ -25,6 +27,45 @@ public class ProjetMapper {
         dto.setStatut(projet.getStatut());
         dto.setTacheIds(projet.getTaches() == null ? Collections.emptyList() :
                 projet.getTaches().stream().map(Tache::getId).collect(Collectors.toList()));
+        
+     // Ressources
+        if (projet.getRessources() != null) {
+
+            // IDs
+            List<Long> ressourceIds =
+                    projet.getRessources()
+                            .stream()
+                            .map(Ressource::getId)
+                            .collect(Collectors.toList());
+
+            dto.setRessourceIds(ressourceIds);
+
+            // Noms
+            List<String> ressourcesNoms =
+                    projet.getRessources()
+                            .stream()
+                            .map(Ressource::getNom)
+                            .collect(Collectors.toList());
+
+            dto.setRessourcesNoms(ressourcesNoms);
+
+            // Coût total projet
+            double total =
+                    projet.getRessources()
+                            .stream()
+                            .mapToDouble(Ressource::getCout)
+                            .sum();
+
+            dto.setCoutTotalProjet(total);
+
+            // Budget restant
+            if (projet.getBudget() != null) {
+
+                dto.setBudgetRestant(
+                        projet.getBudget() - total
+                );
+            }
+        }
         return dto;
     }
 

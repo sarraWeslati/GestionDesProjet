@@ -6,9 +6,13 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.JoinTable;
+import jakarta.persistence.JoinColumn;
 
 import java.util.Date;
 import java.util.List;
+import java.util.ArrayList;
 
 @Entity
 public class Projet {
@@ -25,6 +29,14 @@ public class Projet {
 
     @OneToMany(mappedBy = "projet", cascade = CascadeType.ALL)
     private List<Tache> taches;
+    
+    @ManyToMany
+    @JoinTable(
+        name = "projet_ressource",
+        joinColumns = @JoinColumn(name = "projet_id"),
+        inverseJoinColumns = @JoinColumn(name = "ressource_id")
+    )
+    private List<Ressource> ressources = new ArrayList<>();
 
     public Projet() {
     }
@@ -93,5 +105,13 @@ public class Projet {
 
     public void setTaches(List<Tache> taches) {
         this.taches = taches;
+    }
+    
+    public List<Ressource> getRessources() {
+        return ressources;
+    }
+
+    public void setRessources(List<Ressource> ressources) {
+        this.ressources = ressources;
     }
 }

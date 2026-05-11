@@ -5,8 +5,10 @@ import com.project.project_management.dto.RapportFinancierDTO;
 import com.project.project_management.mapper.ProjetMapper;
 import com.project.project_management.model.Affectation;
 import com.project.project_management.model.Projet;
+import com.project.project_management.model.Ressource;
 import com.project.project_management.repository.AffectationRepository;
 import com.project.project_management.repository.ProjetRepository;
+import com.project.project_management.repository.RessourceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,15 +19,17 @@ import java.util.stream.Collectors;
 public class ProjetService {
 
     private final ProjetRepository projetRepository;
+    private final RessourceRepository ressourceRepository;
     private final AffectationRepository affectationRepo;
     private final ProjetMapper projetMapper;
 
     @Autowired
     public ProjetService(ProjetRepository projetRepository, AffectationRepository affectationRepo,
-                         ProjetMapper projetMapper) {
+                         ProjetMapper projetMapper, RessourceRepository ressourceRepository) {
         this.projetRepository = projetRepository;
         this.affectationRepo = affectationRepo;
         this.projetMapper = projetMapper;
+        this.ressourceRepository = ressourceRepository;
     }
 
     public List<ProjetDTO> getAll() {
@@ -37,6 +41,14 @@ public class ProjetService {
 
     public ProjetDTO save(ProjetDTO dto) {
         Projet projet = projetMapper.toEntity(dto);
+        List<Ressource> ressources =
+                dto.getRessourceIds() == null
+                        ? List.of()
+                        : ressourceRepository.findAllById(
+                                dto.getRessourceIds()
+                        );
+
+        projet.setRessources(ressources);
         return projetMapper.toDto(projetRepository.save(projet));
     }
 
@@ -47,6 +59,16 @@ public class ProjetService {
         projet.setDateFin(dto.getDateFin());
         projet.setBudget(dto.getBudget());
         projet.setStatut(dto.getStatut());
+        // Récupérer ressources sélectionnées
+        List<Ressource> ressources =
+                dto.getRessourceIds() == null
+                        ? List.of()
+                        : ressourceRepository.findAllById(
+                                dto.getRessourceIds()
+                        );
+
+        // Associer ressources au projet
+        projet.setRessources(ressources);
         return projetMapper.toDto(projetRepository.save(projet));
     }
 

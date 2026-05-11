@@ -33,4 +33,16 @@ public class ProjetDTO { // DTO pour le projet
     private String statut;
 
     private List<Long> tacheIds;
+    
+ // IDs des ressources
+    private List<Long> ressourceIds;
+
+    // Noms des ressources
+    private List<String> ressourcesNoms;
+
+    // Coût total du projet
+    private Double coutTotalProjet;
+
+    // Budget restant
+    private Double budgetRestant;
 }
