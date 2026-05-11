@@ -4,13 +4,15 @@ import { Observable } from 'rxjs';
 
 import { Ressource } from '../models/ressource';
 
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class RessourceService {
 
-  api = 'http://localhost:8080/api/ressources';
+  api = `${environment.apiUrl}/api/ressources`;
 
   constructor(private http: HttpClient) {}
 

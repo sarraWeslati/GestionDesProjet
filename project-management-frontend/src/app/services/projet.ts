@@ -4,13 +4,15 @@ import { Observable } from 'rxjs';
 
 import { Projet } from '../models/projet';
 
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class ProjetService {
 
-  api = 'http://localhost:8080/api/projets';
+  api = `${environment.apiUrl}/api/projets`;
 
   constructor(private http: HttpClient) {}
 

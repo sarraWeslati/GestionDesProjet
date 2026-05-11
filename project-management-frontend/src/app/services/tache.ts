@@ -4,13 +4,15 @@ import { Observable } from 'rxjs';
 
 import { Tache } from '../models/tache';
 
+import { environment } from '../../environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
 
 export class TacheService {
 
-  api = 'http://localhost:8080/api/taches';
+  api = `${environment.apiUrl}/api/taches`;
 
   constructor(private http: HttpClient) {}
 

@@ -36,12 +36,15 @@ export class Taches implements OnInit {
 
   tache: Tache = {
 
-   description: '',
+  description: '',
   etat: '',
   priorite: '',
   deadline: '',
+
   projetId: 0,
   responsableId: 0,
+
+  coutTotal: 0,
 
   ressourceIds: []
 
@@ -183,12 +186,15 @@ export class Taches implements OnInit {
 
    this.tache = {
 
-   description: '',
+  description: '',
   etat: '',
   priorite: '',
   deadline: '',
+
   projetId: 0,
   responsableId: 0,
+
+  coutTotal: 0,
 
   ressourceIds: []
 

@@ -1,11 +1,12 @@
 package com.project.project_management.model;
 
-import jakarta.persistence.Entity;
+import jakarta.persistence.*;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
+@Table(name = "users")
 public class User {
 
     @Id
