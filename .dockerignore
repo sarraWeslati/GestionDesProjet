@@ -1,0 +1,10 @@
+target/
+.git/
+.settings/
+.classpath
+.project
+.factorypath
+project-management-frontend/node_modules/
+project-management-frontend/dist/
+project-management-frontend/.angular/
+*.log
