@@ -8,7 +8,6 @@ import { Employes } from './pages/employes/employes';
 import { Taches } from './pages/taches/taches';
 import { Ressources } from './pages/ressources/ressources';
 
-import { authGuard } from './guards/auth-guard';
 
 import { Layout } from './shared/layout/layout';
 
@@ -28,7 +27,7 @@ export const routes: Routes = [
   {
     path: '',
     component: Layout,
-    canActivate: [authGuard],
+
 
     children: [
 
