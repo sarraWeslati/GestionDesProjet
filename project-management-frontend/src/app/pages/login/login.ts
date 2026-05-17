@@ -16,21 +16,25 @@ export class Login {
   username = '';
   password = '';
 
-  constructor(private authService: AuthService, private router: Router) {}
-  
+  constructor(
+    private authService: AuthService,
+    private router: Router
+  ) {}
 
   login() {
 
     const data = {
+
       username: this.username,
       password: this.password
+
     };
 
     this.authService.login(data).subscribe({
 
-      next: (token) => {
+      next: (user) => {
 
-        localStorage.setItem('token', token);
+        console.log(user);
 
         this.router.navigate(['/dashboard']);
 
