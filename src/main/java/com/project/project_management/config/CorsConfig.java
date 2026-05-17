@@ -18,7 +18,8 @@ public class CorsConfig {
         CorsConfiguration configuration = new CorsConfiguration();
 
         configuration.setAllowedOrigins(List.of(
-            "https://project-frontend-89530374547.us-central1.run.app"
+            "http://34.132.223.129:4200",
+            "http://localhost:4200"
         ));
 
         configuration.setAllowedMethods(List.of(

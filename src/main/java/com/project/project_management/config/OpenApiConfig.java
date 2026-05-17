@@ -16,7 +16,7 @@ public class OpenApiConfig {
 
         Server server = new Server();
 
-        server.setUrl("https://project-backend-89530374547.us-central1.run.app");
+        server.setUrl("http://34.132.223.129:8080");
 
         server.setDescription("Production Server");
 
